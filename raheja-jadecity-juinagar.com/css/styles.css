@@ -1,0 +1,393 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+/* FULL SCREEN LAYOUT */
+.full-screen {
+  height: 100vh;               /* Full screen section */
+  display: flex;
+  align-items: stretch;
+  background: #f5f5e9;
+  padding: 0;
+}
+
+.image-slider {
+  width: 90%;                  /* Left Side - Image */
+  height: 100vh;               /* Full height */
+  overflow: hidden;
+}
+
+.image-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* FULL-SCREEN CROPPED IMAGE */
+  transition: opacity 0.5s ease-in-out;
+}
+
+.banner-text {
+  width: 40%;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;     /* Vertically centered text */
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+}
+
+.banner-text h2 {
+  font-size: 23px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+    color: #fff;
+    margin-top: 11px;
+}
+
+.banner-text h3 {
+    font-size: 35px;
+    margin-bottom: 16px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.banner-text .price {
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+.banner-text .price span {
+  color: #fdd53f;
+  font-weight: bold;
+}
+
+/* FEATURES GRID */
+.features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.features div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+  font-size: 18px;
+  color: #000;
+}
+
+.features img {
+  width: 20px;
+  height: 20px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+  .full-screen {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .image-slider {
+    width: 100%;
+    height: 55vh;
+  }
+
+  .banner-text {
+    width: 100%;
+    padding: 25px;
+  }
+}
+@media (max-width: 768px) {
+    .banner-container {
+        display: flex;
+        flex-direction: column-reverse;  /* Text goes down, Image goes up */
+    }
+
+    .banner-text {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .image-slider img {
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-width: 900px) {
+
+  .full-screen {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+
+  .image-slider {
+    width: 100%;
+    aspect-ratio: 9 / 16; /* 1080 x 1920 ratio */
+    overflow: hidden;
+  }
+
+  .image-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Best visual fit */
+  }
+
+  .banner-text {
+    width: 100%;
+    padding: 25px;
+    text-align: center;
+  }
+}
+/* FULL SCREEN BANNER */
+.full-screen {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* .banner-text {
+ z-index: 2;
+    position: relative;
+    padding: 50px 30px;
+    color: #fff;
+    max-width: 29%;
+    max-height: 50%;
+    top: 230px;
+    left: 30px;
+} */
+
+.image-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.image-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ensures full coverage */
+  transition: opacity 0.3s ease;
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 900px) {
+  .full-screen {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .banner-text {
+    max-width: 100%;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .image-slider {
+    position: relative;
+    height: 55vh; /* adjust as needed */
+  }
+
+  .image-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-text h2 {
+    font-size: 23px;
+    line-height: 1.3;
+  }
+
+  .banner-text h3 {
+    font-size: 20px;
+    margin-top: 5px;
+  }
+
+  .banner-text .features div {
+    font-size: 16px;
+  }
+
+  .banner-text hr {
+    margin: 5px 0;
+  }
+}
+@media (max-width: 900px) {
+  .full-screen {
+    flex-direction: column; /* Stack text above image */
+    height: auto;
+  }
+
+  .banner-text {
+    max-width: 100%;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .image-slider {
+    position: relative; /* Remove absolute positioning */
+    width: 100%;
+    height: 50vh; /* Adjust height as needed */
+  }
+
+  .image-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+/* DESKTOP DEFAULT */
+/* DESKTOP — LEFT BOX SMALLER */
+.banner-text {
+  z-index: 2;
+  color: #fff;
+  width: 28%;
+  padding: 35px 25px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 16px;
+  
+  margin-top: 240px;      /* Space from TOP */
+  margin-left: 40px;     /* Space from LEFT */
+  margin-bottom: 40px;   /* Slight lift from bottom */
+  height: fit-content;
+}
+
+/* Adjust full-screen layout */
+.full-screen {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* MOBILE RESPONSIVE */
+/* --- PERFECT MOBILE FIX --- */
+@media (max-width: 900px) {
+
+  .banner-container,
+  .full-screen {
+    flex-direction: column-reverse !important;
+    height: auto !important;
+  }
+
+  .banner-text {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 0 !important;            /* REMOVE TOP, LEFT & BOTTOM SPACING */
+    padding: 20px !important;
+
+    background: rgba(0,0,0,0.55);
+    border-radius: 0 !important;
+
+    text-align: center !important;
+  }
+
+  .image-slider {
+    width: 100% !important;
+    height: 55vh !important;
+    position: relative !important;
+  }
+
+  .image-slider img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+}
+@media (max-width: 900px) {
+
+  /* Reduce H2 title */
+  .banner-text h2 {
+    font-size: 21px !important;
+    line-height: 1.3 !important;
+    margin-top: 0px;
+  }
+
+  /* Reduce price block title */
+  .banner-text h3 {
+    font-size: 22px !important;
+    line-height: 1.3 !important;
+    border: 2px dotted #fff;
+        border-radius: 40px;
+  }
+
+  /* Reduce price numbers (₹2.66 Cr etc.) */
+  .banner-text .price span {
+    font-size: 22px !important;
+  }
+
+  /* Reduce features text */
+  .banner-text .features div {
+    font-size: 14px !important;
+    padding: 8px 10px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .image-slider img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+  }
+}
+@media (max-width: 900px) {
+  .banner-text {
+    background-image: linear-gradient(to bottom, #bb6d1a, #553107);
+    /* OR use any color you want */
+    /* background: #ffffffcc !important;  white transparent */
+    /* background: #333 !important;       dark */
+    border-top: 3px solid;
+    border-image: linear-gradient(to right,#ca7c06,#dd9d08) 1 0 0 0;
+
+  }
+}
+.text {
+    text-align: left !important;
+  }
+@media (max-width: 900px) {
+  .text {
+    text-align: center !important;
+  }
+
+  /* Optional: center features icons too */
+  .banner-text .features div {
+    justify-content: center !important;
+  }
+}
+
+
+
