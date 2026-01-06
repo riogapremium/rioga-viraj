@@ -1,0 +1,345 @@
+ .bodycontentcost {
+      display: flex;
+      justify-content: center;
+    }
+    .paper {
+      background-color: #fff;
+      width: 100%;
+      max-width: 800px;
+      padding: 16px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+      height: 350px;
+      transition: .5s ease-in-out;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.5em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 0px;
+    }
+    th,
+    td {
+      padding: 8px 10px;
+      border: 1px solid #ddd;
+      font-size: 0.85em !important;
+    }
+    th {
+      background-color: #f0f0f0;
+      text-align: left;
+    }
+    .first-col {
+      font-weight: 500;
+      width: 60%;
+      background-color: #fafafa;
+      padding: 0.2rem .625rem;
+    }
+    .second-col {
+      text-align: right;
+      background-color: #fff;
+      padding: 0.2rem .625rem;
+      filter: blur(2.3px)
+    }
+    .section-header {
+      background-color: #dcdcdc;
+      font-weight: bold;
+      text-align: center;
+      padding: 4px;
+      font-size: 1em;
+    }
+    .expandCost {
+      position: absolute;
+      color: #fff;
+      background: #1f1513;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 17px;
+      bottom: 0;
+      left: 0;
+      padding: 6px;
+    }
+    @media (max-width: 600px) {
+      .section-header {
+        background-color: #dcdcdc;
+        font-weight: bold;
+        text-align: center;
+        padding: 4px;
+        font-size: 1em;
+      }
+      th,
+      td {
+        padding: 8px 10px;
+        border: 1px solid #ddd;
+        font-size: 0.65em !important;
+      }
+      .paper {
+        padding: 16px;
+      }
+      th,
+      td {
+        font-size: 0.85em;
+        padding: 6px 8px;
+      }
+      h2 {
+        font-size: 1.2em;
+      }
+      .expandCost {
+        font-size: 13px;
+      }
+    }
+   
+    .grecaptcha-badge {
+      display: none !important;
+    }
+     /* Remove Bootstrap column layout and apply flex instead */
+    .nav-tab-list {
+      display: flex;
+      flex-wrap: nowrap;
+      /* prevents wrapping to new line */
+      gap: 0.6rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      overflow-x: auto;
+      /* enables horizontal scroll */
+      -webkit-overflow-scrolling: touch;
+      /* smooth scroll on iOS */
+      scrollbar-width: none;
+      /* hides scrollbar in Firefox */
+    }
+    /* Hide scrollbar for Webkit browsers */
+    .nav-tab-list::-webkit-scrollbar {
+      display: none;
+    }
+    /* Tab styling */
+    .btn-tab {
+      flex: 0 0 auto;
+      width: 100px;
+      /* Adjust as needed */
+      height: 90px;
+      /* Adjust based on image and text size */
+      padding: 10px;
+      background-color: transparent;
+      border-radius: 20px;
+      color: #000;
+      text-decoration: none;
+      font-size: 14px;
+      white-space: nowrap;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 13px -9px #6c6e70;
+      border: 0.5px solid #d6d6d6a6;
+    }
+    .btn-tab img {
+      width: 45px;
+      margin-bottom: 5px;
+    }
+    .btn-tab p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.2;
+    }
+    /* Active button */
+    .btn-tab.active {
+      background-color: #f1f1f1;
+      color: #000;
+      /* border-color: #20322f; */
+      font-weight: bold;
+      /* color: #fff; */
+      border-bottom: 2px solid #d26547;
+      height: 90px;
+    }
+    .mobile-tab-wrapper {
+      position: relative;
+      /* normal flow initially */
+      transition: all 0.3s ease;
+      background: #fff;
+      backdrop-filter: saturate(180%) blur(20px);
+      box-shadow: -1px 4px 4px -5px #20322F;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0px 9px 0px;
+    }
+    .mobile-tab-wrapper.sticky {
+      position: fixed;
+      top: 0px;
+      left: 0;
+      width: 100%;
+    }
+    .nav-link {
+      display: block;
+      padding: 5px 11px;
+      color: #000 !important;
+      text-decoration: none;
+      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+    }
+     /* Remove Bootstrap column layout and apply flex instead */
+    .nav-tab-listpp {
+      display: flex;
+      flex-wrap: nowrap;
+      /* prevents wrapping to new line */
+      gap: 0.6rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      overflow-x: auto;
+      /* enables horizontal scroll */
+      -webkit-overflow-scrolling: touch;
+      /* smooth scroll on iOS */
+      scrollbar-width: none;
+      /* hides scrollbar in Firefox */
+    }
+    /* Hide scrollbar for Webkit browsers */
+    .nav-tab-listpp::-webkit-scrollbar {
+      display: none;
+    }
+    /* Tab styling */
+    .btn-tabpp {
+      flex: 0 0 auto;
+      width: 208px;
+      /* Fixed width to keep all buttons equal */
+      height: 40px;
+      /* Consistent height for all buttons */
+      padding: 10px;
+      background-color: transparent;
+      border-radius: 20px;
+      color: #000;
+      text-decoration: none;
+      font-size: 14px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      white-space: normal;
+      /* Allow text to wrap */
+    }
+    .btn-tabpp img {
+      width: 45px;
+      margin-bottom: 5px;
+    }
+    .btn-tabpp p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.2;
+      text-align: center;
+      white-space: normal;
+      /* Allows line break */
+      word-break: break-word;
+      /* Breaks long words if needed */
+    }
+    /* Active button */
+    .btn-tabpp.active {
+      background-color: #f1f1f1;
+      color: #000;
+      /* border-color: #20322f; */
+      font-weight: bold;
+      /* color: #fff; */
+      border-bottom: 2px solid #d26547;
+      height: 79px;
+    }
+    .mobile-tab-wrapperpp {
+      position: relative;
+      /* normal flow initially */
+      transition: all 0.3s ease;
+      background: #fff;
+      backdrop-filter: saturate(180%) blur(20px);
+      box-shadow: -1px 4px 4px -5px #20322F;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0px 9px 0px;
+    }
+    .mobile-tab-wrapperpp.sticky {
+      position: fixed;
+      top: 0px;
+      left: 0;
+      width: 100%;
+    }
+    .nav-linkpp {
+      display: block;
+      padding: 5px 11px;
+      color: #000 !important;
+      text-decoration: none;
+      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+    }
+
+      /* Grid layout */
+    #amiBtn .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      /* 6 per row */
+      gap: 20px;
+      align-items: stretch;
+      /* ✅ force equal height tiles */
+      padding: 30px 0;
+    }
+    /* Each tile */
+    #amiBtn .amenity {
+      background: #fff;
+      border-radius: 16px;
+      padding: 9px 6px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      /* ✅ distribute icon + text */
+    }
+    #amiBtn .amenity:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.12);
+    }
+    /* Icon box */
+    #amiBtn .icon-box {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+    #amiBtn .icon-box img {
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    #amiBtn .amenity:hover .icon-box img {
+      transform: scale(1.1);
+    }
+    /* Text */
+    #amiBtn .imgtext {
+      font-size: 14px;
+      font-weight: 600;
+      color: #000;
+    }
+    /* Responsive: 3 per row on tablets, 2 per row on mobiles */
+    @media (max-width: 992px) {
+      #amiBtn .amenities-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      #amiBtn .amenities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
