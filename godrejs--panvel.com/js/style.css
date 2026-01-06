@@ -1,0 +1,102 @@
+ .bodycontentcost {
+      display: flex;
+      justify-content: center;
+    }
+    .paper {
+      background-color: #fff;
+      width: 100%;
+      max-width: 800px;
+      padding: 16px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+      height: 350px;
+      transition: .5s ease-in-out;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.5em;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 0px;
+    }
+    th,
+    td {
+      padding: 8px 10px;
+      border: 1px solid #ddd;
+      font-size: 0.85em !important;
+    }
+    th {
+      background-color: #f0f0f0;
+      text-align: left;
+    }
+    .first-col {
+      font-weight: 500;
+      width: 60%;
+      background-color: #fafafa;
+      padding: 0.2rem .625rem;
+    }
+    .second-col {
+      text-align: right;
+      background-color: #fff;
+      padding: 0.2rem .625rem;
+      filter: blur(2.3px)
+    }
+    .section-header {
+      background-color: #dcdcdc;
+      font-weight: bold;
+      text-align: center;
+      padding: 4px;
+      font-size: 1em;
+    }
+    .expandCost {
+      position: absolute;
+      color: #fff;
+      background: #1f1513;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 17px;
+      bottom: 0;
+      left: 0;
+      padding: 6px;
+    }
+    @media (max-width: 600px) {
+      .section-header {
+        background-color: #dcdcdc;
+        font-weight: bold;
+        text-align: center;
+        padding: 4px;
+        font-size: 1em;
+      }
+      th,
+      td {
+        padding: 8px 10px;
+        border: 1px solid #ddd;
+        font-size: 0.65em !important;
+      }
+      .paper {
+        padding: 16px;
+      }
+      th,
+      td {
+        font-size: 0.85em;
+        padding: 6px 8px;
+      }
+      h2 {
+        font-size: 1.2em;
+      }
+      .expandCost {
+        font-size: 13px;
+      }
+    }
+   
+    .grecaptcha-badge {
+      display: none !important;
+    }
