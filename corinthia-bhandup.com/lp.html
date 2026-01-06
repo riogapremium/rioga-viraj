@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aurora AV — Bespoke Audio & Automation</title>
+
+  <!-- Google Fonts: Playfair Display (display) and Inter (ui) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0f1724;         /* deep navy */
+      --card: #0b1220;       /* darker card */
+      --muted: #94a3b8;
+      --accent: #ff7a59;     /* coral accent */
+      --accent-2: #60d394;   /* green accent */
+      --glass: rgba(255,255,255,0.04);
+      --radius: 12px;
+      --maxw: 1200px;
+      color-scheme: dark;
+      color: #e6eef8;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,var(--bg) 0%, #071025 100%);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding-bottom:64px;
+    }
+
+    .container{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:32px;
+    }
+
+    /* NAVBAR */
+    header.topbar{
+      position:sticky;
+      top:0;
+      z-index:60;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(10,14,22,0.6), rgba(10,14,22,0.35));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 24px;
+      max-width:var(--maxw);
+      margin:0 auto;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo {
+      width:44px;height:44px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#ffb089);
+      display:flex;align-items:center;justify-content:center;font-weight:700;
+      color:#08111a;font-family:"Playfair Display", serif;font-size:18px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+    }
+    .navlinks{display:flex;gap:18px;align-items:center}
+    .navlinks a{color:var(--muted);text-decoration:none;font-weight:600}
+    .cta-btn{
+      padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#ff9c7a);
+      color:#06101b;font-weight:700;border:none;cursor:pointer;
+      box-shadow:0 6px 20px rgba(255,122,89,0.12);
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:28px;
+      padding:56px 24px;
+      align-items:center;
+    }
+    .hero-inner{
+      display:flex;gap:28px;align-items:center;flex-direction:column;
+      text-align:center;
+    }
+    .hero h1{
+      font-family:"Playfair Display", serif;
+      font-size: clamp(28px, 4.5vw, 48px);
+      margin:0 0 6px 0;
+      color: #fff;
+      line-height:1.02;
+    }
+    .hero p{
+      color:var(--muted);
+      max-width:900px;margin:0 auto 18px auto;font-size:16px;
+    }
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+    .secondary{
+      background:transparent;border:1px solid rgba(255,255,255,0.06); padding:10px 14px;border-radius:10px;color:var(--muted);
+    }
+
+    /* Brands carousel */
+    .brands{
+      margin-top:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      padding:14px;border-radius:10px;
+      display:flex;align-items:center;gap:18px;overflow:hidden;
+    }
+    .brand-track{
+      display:flex;gap:36px;align-items:center;animation:slide 30s linear infinite;
+    }
+    .brand-item{flex:0 0 auto;width:120px;height:48px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;border-radius:8px;font-weight:700;color:var(--muted)}
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    /* repeating the track so animation is seamless */
+    .brand-track > .dup { visibility:hidden } /* keep DOM doubled but hide duplicates in small screens */
+
+    /* SECTIONS */
+    .grid{
+      display:grid;
+      gap:20px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width:980px){ .grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:680px){ .grid{grid-template-columns:1fr} .hero-inner{text-align:left;align-items:flex-start} .hero{padding:28px 18px} }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius); padding:18px; border:1px solid rgba(255,255,255,0.03);
+    }
+    .services .card h3{margin:8px 0 6px 0;font-size:18px}
+    .services .card p{color:var(--muted);margin:0;font-size:14px}
+
+    /* STATS */
+    .stats{display:flex;gap:10px;align-items:stretch;justify-content:space-between;margin-top:18px}
+    .stat{flex:1;padding:18px;border-radius:12px;background:var(--glass);text-align:center}
+    .stat .num{font-size:28px;font-weight:700}
+    .stat .label{color:var(--muted);font-size:13px;margin-top:6px}
+
+    /* Blog list */
+    .blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    @media (max-width:900px){ .blog-grid{grid-template-columns:1fr} }
+
+    .blog-card .meta{color:var(--muted);font-size:13px;margin-bottom:8px}
+    .blog-card h4{margin:6px 0 10px 0}
+    .blog-card p{color:var(--muted);margin:0}
+
+    /* CTA */
+    .cta{
+      display:flex;gap:18px;align-items:center;justify-content:space-between;padding:22px;border-radius:12px;margin-top:28px;background:linear-gradient(90deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    @media (max-width:720px){ .cta{flex-direction:column;text-align:center} }
+
+    /* FOOTER */
+    footer{margin-top:36px;color:var(--muted);padding:36px 0 80px 0}
+    .footer-grid{display:flex;gap:24px;justify-content:space-between}
+    @media (max-width:700px){ .footer-grid{flex-direction:column} }
+
+    /* small utility */
+    .muted{color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:13px;color:var(--muted)}
+    a{color:inherit}
+  </style>
+</head>
+<body>
+
+  <header class="topbar" role="banner">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="brand">
+        <div class="logo">A</div>
+        <div style="line-height:1">
+          <div style="font-weight:700">Aurora AV</div>
+          <div style="font-size:12px;color:var(--muted)">Audio · Home Automation</div>
+        </div>
+      </div>
+
+      <div class="navlinks" aria-hidden>
+        <a href="#services">Solutions</a>
+        <a href="#brands">Brands</a>
+        <a href="#projects">Projects</a>
+        <a href="#news">News</a>
+        <a href="#contact" class="pill">Find a Demo</a>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center">
+        <button class="secondary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Quote</button>
+        <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Talk to Sales</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <h1 id="hero-heading">Immersive living, engineered for you.</h1>
+        <p>We design custom audio, video and smart-home systems that feel effortless — cinema-grade sound, beautiful design, and controls that just work. From single-room experiences to whole-home automation, we create living spaces that delight.</p>
+
+        <div class="hero-actions">
+          <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book a consultation</button>
+          <button class="secondary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">See projects</button>
+        </div>
+
+        <!-- Brands carousel -->
+        <div id="brands" class="brands" style="width:100%;max-width:980px;">
+          <div class="brand-track" id="brandTrack">
+            <div class="brand-item">KEF</div>
+            <div class="brand-item">Denon</div>
+            <div class="brand-item">JBL</div>
+            <div class="brand-item">Sonos</div>
+            <div class="brand-item">Crestron</div>
+            <div class="brand-item">Control4</div>
+            <div class="brand-item">Hegel</div>
+            <div class="brand-item">Revel</div>
+
+            <!-- Duplicate set for seamless loop -->
+            <div class="brand-item">KEF</div>
+            <div class="brand-item">Denon</div>
+            <div class="brand-item">JBL</div>
+            <div class="brand-item">Sonos</div>
+            <div class="brand-item">Crestron</div>
+            <div class="brand-item">Control4</div>
+            <div class="brand-item">Hegel</div>
+            <div class="brand-item">Revel</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="services" class="container" aria-labelledby="services-heading" style="margin-top:6px">
+      <h2 id="services-heading" style="font-family:'Playfair Display', serif;font-size:22px;margin:0 0 12px 0">What we build</h2>
+
+      <div class="grid services">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200&q=60&auto=format&fit=crop" alt="" style="width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px">
+          <h3>Home Cinema</h3>
+          <p>Custom theater rooms with acoustic tuning, immersive surround formats and elegant concealment of equipment.</p>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1541534401786-1b35b9c0b8fc?w=1200&q=60&auto=format&fit=crop" alt="" style="width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px">
+          <h3>Multi-Room Audio</h3>
+          <p>Whole-home audio systems that follow you from room to room with perfect synchronization and simple controls.</p>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1526403224740-3f8d05c8f4f0?w=1200&q=60&auto=format&fit=crop" alt="" style="width:100%;height:140px;object-fit:cover;border-radius:8px;margin-bottom:12px">
+          <h3>Smart Home Automation</h3>
+          <p>Lighting, climate, security and AV integrated into one intuitive control system — named scenes, schedules, voice and app control.</p>
+        </div>
+
+      </div>
+
+      <!-- Stats -->
+      <div class="stats" style="margin-top:18px">
+        <div class="stat card">
+          <div class="num" data-target="125">0</div>
+          <div class="label">Completed Projects</div>
+        </div>
+        <div class="stat card">
+          <div class="num" data-target="18">0</div>
+          <div class="label">Service Centers</div>
+        </div>
+        <div class="stat card">
+          <div class="num" data-target="45">0</div>
+          <div class="label">International Partners</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="container" style="margin-top:34px">
+      <h2 style="font-family:'Playfair Display', serif;font-size:22px;margin:0 0 10px 0">Featured Projects</h2>
+
+      <div class="grid">
+        <div class="card">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:110px;height:80px;border-radius:8px;background:url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=800&q=60&auto=format&fit=crop') center/cover"></div>
+            <div>
+              <div style="font-weight:700">Riverside Residence</div>
+              <div class="muted" style="font-size:13px;margin-top:6px">Whole-home audio & theater</div>
+            </div>
+          </div>
+          <p class="muted" style="margin-top:12px">A discreet system with in-wall speakers and acoustically tuned theater — voice scenes and multi-zone streaming.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:110px;height:80px;border-radius:8px;background:url('https://images.unsplash.com/photo-1505691723518-34d3adcb96f6?w=800&q=60&auto=format&fit=crop') center/cover"></div>
+            <div>
+              <div style="font-weight:700">Urban Penthouse</div>
+              <div class="muted" style="font-size:13px;margin-top:6px">Integrated lighting & AV</div>
+            </div>
+          </div>
+          <p class="muted" style="margin-top:12px">Custom scenes that dim lights, start music, and set temperature with one tap — elegant equipment closets and fiber backbone.</p>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:110px;height:80px;border-radius:8px;background:url('https://images.unsplash.com/photo-1517502166878-35c93a0072bb?w=800&q=60&auto=format&fit=crop') center/cover"></div>
+            <div>
+              <div style="font-weight:700">Boutique Office</div>
+              <div class="muted" style="font-size:13px;margin-top:6px">Conference & background audio</div>
+            </div>
+          </div>
+          <p class="muted" style="margin-top:12px">Integrated conferencing and zoned background music with simple admin dashboards for facilities teams.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="container" style="margin-top:34px">
+      <h2 style="font-family:'Playfair Display', serif;font-size:22px;margin:0 0 12px 0">Insights & News</h2>
+
+      <div class="blog-grid">
+        <article class="card blog-card">
+          <div class="meta">Nov 05, 2025 • Guides</div>
+          <h4>How room size changes speaker choice</h4>
+          <p>Choosing the right speaker is about matching power and dispersion to room geometry — not just brand names. Learn how to measure and choose.</p>
+        </article>
+
+        <article class="card blog-card">
+          <div class="meta">Oct 22, 2025 • Tips</div>
+          <h4>5 quick upgrades for better sound</h4>
+          <p>Small changes — acoustic panels, speaker stands, and placement tweaks — can make a big difference without replacing gear.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="container" style="margin-top:36px">
+      <div class="cta">
+        <div>
+          <div style="font-family:'Playfair Display', serif;font-size:20px">Ready to experience better sound?</div>
+          <div class="muted" style="margin-top:6px">Book a free consultation — we’ll assess your space and suggest tailored solutions.</div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px">
+          <a href="mailto:hello@aurora-av.example" class="secondary" style="text-decoration:none;padding:10px 14px;border-radius:10px">Email Us</a>
+          <button class="cta-btn" onclick="openScheduler()">Schedule</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="container" aria-labelledby="foot">
+      <div class="footer-grid">
+        <div style="max-width:520px">
+          <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+            <div class="logo" style="width:48px;height:48px;font-size:20px">A</div>
+            <div>
+              <div style="font-weight:700">Aurora AV</div>
+              <div class="muted" style="font-size:13px">Designing attentive audio & smart home experiences</div>
+            </div>
+          </div>
+
+          <div class="muted" style="margin-top:12px">© Aurora AV — All rights reserved.<br>Made with care in India.</div>
+        </div>
+
+        <div style="display:flex;gap:36px;align-items:flex-start">
+          <div>
+            <div style="font-weight:700;margin-bottom:8px">Company</div>
+            <div class="muted">About • Careers • Press</div>
+          </div>
+          <div>
+            <div style="font-weight:700;margin-bottom:8px">Support</div>
+            <div class="muted">Contact • Service & Repairs • Documentation</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Simple brand track pause on hover
+    const track = document.getElementById('brandTrack');
+    track.addEventListener('mouseenter', () => track.style.animationPlayState = 'paused');
+    track.addEventListener('mouseleave', () => track.style.animationPlayState = 'running');
+
+    // Stats counter animation on visible
+    const counters = document.querySelectorAll('.num');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const el = entry.target;
+          const target = +el.getAttribute('data-target');
+          if(!el.dataset.animated){
+            let start = 0;
+            const duration = 1400;
+            const step = (timestampStart) => {
+              const now = Date.now();
+              const progress = Math.min(1, (now - (el._startTime||now)) / duration);
+              el.textContent = Math.floor(progress * target);
+              if(progress < 1){
+                requestAnimationFrame(step);
+              } else {
+                el.textContent = target;
+              }
+            };
+            el._startTime = Date.now();
+            requestAnimationFrame(step);
+            el.dataset.animated = '1';
+          }
+        }
+      });
+    }, {threshold: 0.3});
+
+    counters.forEach(c => observer.observe(c));
+
+    // small function for CTA
+    function openScheduler(){
+      alert('Thanks — open your calendar here in your real project (placeholder).');
+    }
+
+    // Responsive duplication fix: if brand track width < container, stop animation
+    function adjustTrack(){
+      const brands = document.querySelectorAll('.brand-item');
+      if(!brands.length) return;
+      const totalWidth = Array.from(brands).reduce((s, b) => s + b.offsetWidth + 36, 0);
+      // if track not wide enough, slow animation
+      if(totalWidth < document.querySelector('.brands').offsetWidth * 2){
+        track.style.animationDuration = '50s';
+      }
+    }
+    window.addEventListener('load', adjustTrack);
+    window.addEventListener('resize', adjustTrack);
+
+  </script>
+</body>
+</html>
